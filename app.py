@@ -15,7 +15,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope
 client = gspread.authorize(credentials)
 
 # === ABRIR PLANILHA ===
-spreadsheet = client.open("NomeDaSuaPlanilha")  # Substitua pelo nome real
+spreadsheet = client.open("financas")  # Substitua pelo nome real
 sheet = spreadsheet.sheet1
 
 
