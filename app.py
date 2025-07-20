@@ -4,6 +4,21 @@ import plotly.express as px
 import io
 import os
 from datetime import datetime
+import json
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+# === CONFIGURAR CREDENCIAIS E CONECTAR AO GOOGLE SHEETS ===
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds_dict = json.loads(st.secrets["GOOGLE_SHEETS_CREDS"])
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+client = gspread.authorize(credentials)
+
+# === ABRIR PLANILHA ===
+spreadsheet = client.open("NomeDaSuaPlanilha")  # Substitua pelo nome real
+sheet = spreadsheet.sheet1
+
+
 
 st.set_page_config(page_title="Controle Financeiro", layout="centered")
 
